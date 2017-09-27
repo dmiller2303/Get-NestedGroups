@@ -15,6 +15,7 @@
 
     )
 
+    #Switch statement to put items into the Excel cells, color the cells, and output to the console
     function ExcelSwitchy ($counter, $rowcounter) {
         switch ($counter) {
             3 {
@@ -134,6 +135,7 @@
         }
     }
 
+    #Switch Statment to output the groups to the console
     function Switchy ($counter){
     switch ($counter){
         3 {Write-Host -ForegroundColor Green "      $groupName"}
@@ -156,7 +158,7 @@
     }
 
 
-
+    #Function that runs against each group in the pipeline that gathers its Nested Groups and then calls itself against the new Nested Groups in the pipeline until there are no nested groups
     function NestedGroups{
     
         $groupName = $_.name
@@ -176,6 +178,7 @@
        
         }
     
+        #Prevents an infinte loop of nested groups by checking to see if the 'child' group is also the 'parent' of the current group
         if ($objectGUID -ccontains $h.objectGUID ) {
 
             $counter++
@@ -197,8 +200,9 @@
     }
 
 
+#End of Functions, Starting point.
 
-
+    #If outputting to Excel, starts excel and opens or creates the file to be used.
     if($WithExcel){
 
         $xl = New-Object -ComObject Excel.Application
@@ -208,7 +212,6 @@
             $xb = $xl.Workbooks.Open($ExcelFilePath)
         }else{
         
-            
             $xb = $xl.Workbooks.Add()
             $xb.saveas($ExcelFilePath)
        
@@ -217,23 +220,30 @@
         $ws = $xb.Sheets.Item(1)
      }
 
-
+    #Set counter Variables
     $Script:rowcounter = 1 
     $Script:counter = 1
 
+    #Set Variable for the top level group
     $search = get-adgroup -filter {name -like $TopLevelGroup}
     Write-Host "`n`n"
+    
+    #Set variable for the nested groups of the top level group
     $groups = get-adgroupmember $search.objectGUID | where {$_.objectClass -like "Group"}
     write-host -ForegroundColor White $TopLevelGroup
     
+    #If outputting to excel, put top level group in cell 1,1
     if($WithExcel){
         $ws.cells.item($Script:rowcounter, $counter) = $TopLevelGroup
     }
 
     $Script:counter++
     $Script:rowcounter++
+
+    #Recursively get nested groups
     $groups | % {NestedGroups}
 
+    #Release Excel COM Object if it was used.
     if($WithExcel){
         [System.Runtime.Interopservices.Marshal]::ReleaseComObject($xl)
     }
