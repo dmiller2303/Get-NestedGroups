@@ -24,6 +24,14 @@ function Show-Groups ($sg_counter) {
 }
 
 
+# Function to increment the script level variable rowcounter
+function Increment-Rowcounter {
+
+    $Script:rowcounter++
+
+}
+
+
 # Switch statement to put items into the Excel cells, color the cells, and output to the console
 function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
     switch ($ETE_counter) {
@@ -33,7 +41,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 4
-            $Script:rowcounter++
+            Increment-Rowcounter
                 
         }
 
@@ -42,7 +50,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 8
-            $Script:rowcounter++
+            Increment-Rowcounter
                 
         }
 
@@ -51,7 +59,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 18
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -60,7 +68,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 16
-            $Script:rowcounter++
+            Increment-Rowcounter
         }
 
         7 {
@@ -68,7 +76,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 3
-            $Script:rowcounter++
+            Increment-Rowcounter
         }
 
         8 {
@@ -76,7 +84,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter   
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 45
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -85,7 +93,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 10
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -94,7 +102,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 33
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -103,7 +111,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 29
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -112,7 +120,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 56
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -121,7 +129,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 30
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -130,7 +138,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 2
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -139,7 +147,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 51
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -148,7 +156,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 45
-            $Script:rowcounter++
+            Increment-Rowcounter
 
         }
 
@@ -156,7 +164,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
                 
             Write-Host "need more swiches"
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
-            $Script:rowcounter++
+            Increment-Rowcounter
         
         }
 
@@ -165,7 +173,7 @@ function Export-ToExcel ($ETE_counter, $ETE_rowcounter) {
             Show-Groups $ETE_counter
             $ws.cells.item($ETE_rowcounter, $ETE_counter) = $groupName
             $ws.cells.item($ETE_rowcounter, $ETE_counter).interior.colorIndex = 6
-            $Script:rowcounter++
+            Increment-Rowcounter
             
         }
     }
@@ -273,7 +281,7 @@ function Get-NestedGroups {
     }
 
     $counter++
-    $Script:rowcounter++
+    Increment-Rowcounter
 
     # Recursively get nested groups
     $groups | ForEach-Object {Find-NestedGroups $counter $Script:rowcounter}
